@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
 import './App.css';
 
+import makeBoard from './components/Model'
 import Tile from './components/Tile'
 
 class App extends Component {
+  state = {
+    board: makeBoard()
+  }
   render() {
-    let array = []
-    for (let i = 0; i < 16; i++) {
-      (i % 4 == 0) ? array.push(<React.Fragment><Tile /><br/><br/></React.Fragment>) : array.push(<Tile/>)
-    }
     return (
       <div className="App">
-        {array}
+        {this.state.board.map(x => <li>{x}</li>)}
       </div>
     );
   }

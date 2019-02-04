@@ -1,25 +1,17 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+
+import Tile from './components/Tile'
 
 class App extends Component {
   render() {
+    let array = []
+    for (let i = 0; i < 16; i++) {
+      (i % 4 == 0) ? array.push(<React.Fragment><Tile /><br/><br/></React.Fragment>) : array.push(<Tile/>)
+    }
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        {array}
       </div>
     );
   }

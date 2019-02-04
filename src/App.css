@@ -1,4 +1,14 @@
 .App {
   display: flex;
-  flex-direction: row; 
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+}
+
+
+.board {
+  display: flex;
+  flex-direction: row
 }

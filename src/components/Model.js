@@ -57,7 +57,6 @@ const makeBoard = () => {
     }
     let vowelCount = checkArray.filter(x => vowels.includes(x)).length
     let consonantCount = checkArray.filter(x => consonants.includes(x)).length
-    console.log([vowelCount, consonantCount])
     return [vowelCount, consonantCount]
   }
 

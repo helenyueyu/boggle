@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import './App.css';
 
 import makeBoard from './components/Model'
-import Tile from './components/Tile'
+
+import Title from './components/Title'
+import TileRow from './components/TileRow'
 
 class App extends Component {
   state = {
@@ -10,9 +12,15 @@ class App extends Component {
   }
   render() {
     return (
+      <React.Fragment>
       <div className="App">
-        {this.state.board.map(x => <li>{x}</li>)}
+        <Title/>
+        <br/>
+        <div className="board">
+          {this.state.board.map((x, idx) => <TileRow key={idx} row={x}/>)}
+        </div>
       </div>
+      </React.Fragment>
     );
   }
 }

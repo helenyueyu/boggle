@@ -27,12 +27,16 @@ class App extends Component {
 
   state = {
     board: [],
-    word: ''
+    word: '',
+    rows: [],
+    cols: [],
   }
 
   render() {
     console.log(this.state.board)
     console.log(this.state.word)
+    console.log(this.state.rows)
+    console.log(this.state.cols)
     console.log(this.state.board.filter(x => x.selected === true).map(x => x.tile))
     return (
       <React.Fragment>
@@ -50,7 +54,12 @@ class App extends Component {
               board: Object.assign(
                 [],
                 this.state.board, this.state.board[idx].selected = !this.state.board[idx].selected),
-              word: (this.state.board[idx].selected === true) ? this.state.word + e.target.innerHTML : this.state.word.slice(0, this.state.word.length - 1)
+
+              word: (this.state.board[idx].selected === true) ? this.state.word + e.target.innerHTML : this.state.word.slice(0, this.state.word.length - 1),
+
+              rows: (this.state.board[idx].selected === true) ? this.state.rows +  this.state.board[idx].row : this.state.rows.slice(0, this.state.rows.length - 1),
+
+              cols: (this.state.board[idx].selected === true) ? this.state.cols +  this.state.board[idx].col : this.state.rows.slice(0, this.state.rows.length - 1),
             })}
             />)}
           </div>
@@ -64,7 +73,10 @@ class App extends Component {
               board: Object.assign(
                 [],
                 this.state.board, this.state.board[idx+4].selected = !this.state.board[idx+4].selected),
-              word: (this.state.board[idx+4].selected === true) ? this.state.word + e.target.innerHTML : this.state.word.slice(0, this.state.word.length - 1)
+              word: (this.state.board[idx+4].selected === true) ? this.state.word + e.target.innerHTML : this.state.word.slice(0, this.state.word.length - 1),
+              rows: (this.state.board[idx+4].selected === true) ? this.state.rows +  this.state.board[idx+4].row : this.state.rows.slice(0, this.state.rows.length - 1),
+
+              cols: (this.state.board[idx+4].selected === true) ? this.state.cols +  this.state.board[idx+4].col : this.state.rows.slice(0, this.state.rows.length - 1),
             })}
             />)}
           </div>
@@ -78,7 +90,10 @@ class App extends Component {
               board: Object.assign(
                 [],
                 this.state.board, this.state.board[idx+8].selected = !this.state.board[idx+8].selected),
-              word: (this.state.board[idx+8].selected === true) ? this.state.word + e.target.innerHTML : this.state.word.slice(0, this.state.word.length - 1)
+              word: (this.state.board[idx+8].selected === true) ? this.state.word + e.target.innerHTML : this.state.word.slice(0, this.state.word.length - 1),
+              rows: (this.state.board[idx+8].selected === true) ? this.state.rows +  this.state.board[idx+8].row : this.state.rows.slice(0, this.state.rows.length - 1),
+
+              cols: (this.state.board[idx+8].selected === true) ? this.state.cols +  this.state.board[idx+8].col : this.state.rows.slice(0, this.state.rows.length - 1),
             })}
             />)}
           </div>
@@ -92,7 +107,11 @@ class App extends Component {
               board: Object.assign(
                 [],
                 this.state.board, this.state.board[idx+12].selected = !this.state.board[idx+12].selected),
-              word: (this.state.board[idx+12].selected === true) ? this.state.word + e.target.innerHTML : this.state.word.slice(0, this.state.word.length - 1)
+              word: (this.state.board[idx+12].selected === true) ? this.state.word + e.target.innerHTML : this.state.word.slice(0, this.state.word.length - 1),
+
+              rows: (this.state.board[idx+12].selected === true) ? this.state.rows +  this.state.board[idx+12].row : this.state.rows.slice(0, this.state.rows.length - 1),
+
+              cols: (this.state.board[idx+12].selected === true) ? this.state.cols +  this.state.board[idx+12].col : this.state.rows.slice(0, this.state.rows.length - 1),
             })}
             />)}
           </div>

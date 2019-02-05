@@ -9,7 +9,7 @@ const tileStyle = {
 }
 
 const Tile = ({idx, tile}) => (
-  <div key={idx} style={tileStyle}>
+  <div key={idx} style={tileStyle} onClick={() => console.log(tile)}>
     {tile}
   </div>
 )

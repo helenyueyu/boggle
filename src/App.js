@@ -4,11 +4,27 @@ import './App.css';
 import makeBoard from './components/Model'
 
 import Title from './components/Title'
-import TileRow from './components/TileRow'
+import Tile from './components/Tile'
 
 class App extends Component {
+  componentDidMount() {
+    let boggle = []
+    let boggleBoard = makeBoard()
+    for (let i = 0; i < 4; i++) {
+      for (let j = 0; j < 4; j++) {
+        boggle.push({
+          row: i+1,
+          col: j+1,
+          tile: boggleBoard[i][j]
+        })
+      }
+    }
+    this.setState({
+      board: boggle
+    })
+  }
   state = {
-    board: makeBoard()
+    board: []
   }
   render() {
     return (
@@ -17,7 +33,10 @@ class App extends Component {
         <Title/>
         <br/>
         <div className="board">
-          {this.state.board.map((x, idx) => <TileRow key={idx} row={x}/>)}
+          {this.state.board.filter((x,idx)=> idx >= 0 && idx <=3).map((x, idx) => <Tile key={idx}
+          tile={x.tile} />)}
+          {this.state.board.filter((x,idx)=> idx >= 4 && idx <=7).map((x, idx) => <Tile key={idx}
+          tile={x.tile} />)}
         </div>
       </div>
       </React.Fragment>

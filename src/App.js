@@ -46,11 +46,11 @@ class App extends Component {
             row={x.row}
             col={x.col}
             selected={x.selected}
-            onClick={() => this.setState({
+            onClick={(e) => this.setState({
               board: Object.assign(
                 [],
                 this.state.board, this.state.board[idx].selected = !this.state.board[idx].selected),
-              word: [...this.state.board.filter(x => x.selected === true).map(x => x.tile)]
+              word: (this.state.board[idx].selected === true) ? this.state.word + e.target.innerHTML : this.state.word.slice(0, this.state.word.length - 1)
             })}
             />)}
           </div>
@@ -60,10 +60,11 @@ class App extends Component {
             row={x.row}
             col={x.col}
             selected={x.selected}
-            onClick={() => this.setState({
+            onClick={(e) => this.setState({
               board: Object.assign(
                 [],
-                this.state.board, this.state.board[idx+4].selected = !this.state.board[idx+4].selected)
+                this.state.board, this.state.board[idx+4].selected = !this.state.board[idx+4].selected),
+              word: (this.state.board[idx+4].selected === true) ? this.state.word + e.target.innerHTML : this.state.word.slice(0, this.state.word.length - 1)
             })}
             />)}
           </div>
@@ -73,10 +74,11 @@ class App extends Component {
             row={x.row}
             col={x.col}
             selected={x.selected}
-            onClick={() => this.setState({
+            onClick={(e) => this.setState({
               board: Object.assign(
                 [],
-                this.state.board, this.state.board[idx+8].selected = !this.state.board[idx+8].selected)
+                this.state.board, this.state.board[idx+8].selected = !this.state.board[idx+8].selected),
+              word: (this.state.board[idx+8].selected === true) ? this.state.word + e.target.innerHTML : this.state.word.slice(0, this.state.word.length - 1)
             })}
             />)}
           </div>
@@ -86,10 +88,11 @@ class App extends Component {
             row={x.row}
             col={x.col}
             selected={x.selected}
-            onClick={() => this.setState({
+            onClick={(e) => this.setState({
               board: Object.assign(
                 [],
-                this.state.board, this.state.board[idx+12].selected = !this.state.board[idx+12].selected)
+                this.state.board, this.state.board[idx+12].selected = !this.state.board[idx+12].selected),
+              word: (this.state.board[idx+12].selected === true) ? this.state.word + e.target.innerHTML : this.state.word.slice(0, this.state.word.length - 1)
             })}
             />)}
           </div>

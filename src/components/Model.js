@@ -40,9 +40,11 @@ const makeBoard = () => {
   }
 
   createLetters()
+
   const chooseTile = (letterDistribution) => {
     let randomIndex = Math.floor(Math.random()*letterDistribution.length)
     let randomletter = letterDistribution[randomIndex]
+    // Once the letter is taken from the distribution, remove the tile 
     letterDistribution = letterDistribution.splice(randomIndex, 1)
     return randomletter
   }

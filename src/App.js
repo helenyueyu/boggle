@@ -7,6 +7,17 @@ import Title from './components/Title'
 import Tile from './components/Tile'
 
 class App extends Component {
+  // row1 and row2 are strings
+  distance = (row1, row2, col1, col2) => {
+    if (Math.abs(parseInt(row1, 10) - parseInt(row2, 10)) <= 1
+    && Math.abs(parseInt(col1, 10) - parseInt(col2, 10)) <= 1) {
+      return true
+    } else if (row1 === undefined || row2 === undefined || col1 === undefined || col2 === undefined) {
+      return true
+    } else {
+      return false
+    }
+  }
   componentDidMount() {
     let boggle = []
     let boggleBoard = makeBoard()
@@ -30,14 +41,22 @@ class App extends Component {
     word: '',
     rows: [],
     cols: [],
+    valid: true
   }
 
   render() {
-    console.log(this.state.board)
-    console.log(this.state.word)
+    // console.log(this.state.board)
+    // console.log(this.state.word)
     console.log(this.state.rows)
     console.log(this.state.cols)
-    console.log(this.state.board.filter(x => x.selected === true).map(x => x.tile))
+    console.log(this.state.valid)
+    console.log(this.distance(
+      this.state.rows[this.state.rows.length-1],
+      this.state.rows[this.state.rows.length-2],
+      this.state.cols[this.state.cols.length-1],
+      this.state.cols[this.state.cols.length-2]
+    ))
+    // console.log(this.state.board.filter(x => x.selected === true).map(x => x.tile))
     return (
       <React.Fragment>
       <div className="App">
@@ -60,6 +79,14 @@ class App extends Component {
               rows: (this.state.board[idx].selected === true) ? this.state.rows +  this.state.board[idx].row : this.state.rows.slice(0, this.state.rows.length - 1),
 
               cols: (this.state.board[idx].selected === true) ? this.state.cols +  this.state.board[idx].col : this.state.rows.slice(0, this.state.rows.length - 1),
+
+              valid: (this.state.valid === false) ? false :
+              (this.state.rows.length <= 1) ? true : (this.distance(
+                this.state.rows[this.state.rows.length-1],
+                this.state.rows[this.state.rows.length-2],
+                this.state.cols[this.state.cols.length-1],
+                this.state.cols[this.state.cols.length-2]
+              ) === true) ? true : false
             })}
             />)}
           </div>
@@ -77,6 +104,14 @@ class App extends Component {
               rows: (this.state.board[idx+4].selected === true) ? this.state.rows +  this.state.board[idx+4].row : this.state.rows.slice(0, this.state.rows.length - 1),
 
               cols: (this.state.board[idx+4].selected === true) ? this.state.cols +  this.state.board[idx+4].col : this.state.rows.slice(0, this.state.rows.length - 1),
+
+              valid: (this.state.valid === false) ? false :
+              (this.state.rows.length <= 1) ? true : (this.distance(
+                this.state.rows[this.state.rows.length-1],
+                this.state.rows[this.state.rows.length-2],
+                this.state.cols[this.state.cols.length-1],
+                this.state.cols[this.state.cols.length-2]
+              ) === true) ? true : false
             })}
             />)}
           </div>
@@ -94,6 +129,14 @@ class App extends Component {
               rows: (this.state.board[idx+8].selected === true) ? this.state.rows +  this.state.board[idx+8].row : this.state.rows.slice(0, this.state.rows.length - 1),
 
               cols: (this.state.board[idx+8].selected === true) ? this.state.cols +  this.state.board[idx+8].col : this.state.rows.slice(0, this.state.rows.length - 1),
+
+              valid: (this.state.valid === false) ? false :
+              (this.state.rows.length <= 1) ? true : (this.distance(
+                this.state.rows[this.state.rows.length-1],
+                this.state.rows[this.state.rows.length-2],
+                this.state.cols[this.state.cols.length-1],
+                this.state.cols[this.state.cols.length-2]
+              ) === true) ? true : false
             })}
             />)}
           </div>
@@ -112,9 +155,18 @@ class App extends Component {
               rows: (this.state.board[idx+12].selected === true) ? this.state.rows +  this.state.board[idx+12].row : this.state.rows.slice(0, this.state.rows.length - 1),
 
               cols: (this.state.board[idx+12].selected === true) ? this.state.cols +  this.state.board[idx+12].col : this.state.rows.slice(0, this.state.rows.length - 1),
+
+              valid: (this.state.valid === false) ? false :
+              (this.state.rows.length <= 1) ? true : (this.distance(
+                this.state.rows[this.state.rows.length-1],
+                this.state.rows[this.state.rows.length-2],
+                this.state.cols[this.state.cols.length-1],
+                this.state.cols[this.state.cols.length-2]
+              ) === true) ? true : false
             })}
             />)}
           </div>
+          // <div>{(this.state.valid === false) ? alert('Hello') : null}</div>
         </div>
       </div>
       </React.Fragment>

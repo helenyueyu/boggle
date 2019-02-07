@@ -1,3 +1,5 @@
+DEMO: https://tokyosuite.github.io/boggle/
+
 This is an exercise. The distribution of Boggle Letters is from this following site:
 
 https://boardgamegeek.com/thread/300883/letter-distribution
